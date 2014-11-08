@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="tabStore">
+  <head>
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="public/js/angular.min.js">
+    </script>
+
+    <script type="text/javascript" src="public/js/app.js"></script>
+         <script type="text/javascript" src="public/js/jquery-2.1.1.min.js"></script>
+  </head>
+
+  <body class="list-group" ng-app="appStore" ng-controller="tableController as table">
+	<h1> Suivi des Tables </h1>
+	
+
+	<div class="row"  ng-show="showDetail == false && tables.length">
+	  <div class="col-sm-2 col-md-2"   ng-repeat="tab in tables">
+	    <div class="thumbnail">
+	      <img ng-src="{{tab.image}}" style="width:200px; height:200px" alt="...">
+	      <div class="caption">
+	        <h3>{{tab.nom}}</h3>
+	        <p><a href ng-click="table.setId(tab.id)" class="btn btn-primary" role="button">Détails</a></p>
+	      </div>
+	    </div>
+	  </div>
+	</div>    
+
+	<div class="row" ng-show="showDetail == true" >
+		<div class="thumbnail">
+	      <img ng-src="{{table[0].image}}" style="width:200px; height:200px" alt="...">
+	      <div class="caption">
+	        <h3>{{table[0].nom}}</h3>
+	        <p><a href ng-click="table.setId()" class="btn btn-primary" role="button">Masquer</a></p>
+	      </div>
+	    </div>
+		<div class="panel panel-primary">
+			<ul>
+				<li>Etat: {{table[0].state}} </li>
+				<li>Lieu: {{table[0].lieu}} </li>
+				<li>Nombre de fût: {{table[0].nbF}}</li>
+				<li>Adresse Mac: {{table[0].mac}}</li>
+			</ul>
+		</div>
+	</div>
+
+	
+
+	
+  </body>
+</html>
